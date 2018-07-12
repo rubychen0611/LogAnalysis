@@ -1,0 +1,6 @@
+LogAnalysis$LogTextOutputFormat.class
+LogAnalysis$LogAnalysisCombiner.class
+LogAnalysis.class
+LogAnalysis$LogAnalysisReducer.class
+LogAnalysis$LogAnalysisPartitioner.class
+LogAnalysis$LogAnalysisMapper.class
