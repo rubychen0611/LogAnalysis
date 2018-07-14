@@ -23,7 +23,7 @@ public class LogAnalysis
         @Override
         public Path getDefaultWorkFile(TaskAttemptContext context, String extension) throws IOException{
             FileOutputCommitter committer = (FileOutputCommitter) getOutputCommitter(context);
-            return new Path(committer.getWorkPath(),getOutputName(context)+".txt");
+            return new Path(getOutputName(context)+".txt");//committer.getWorkPath(),
         }
 
     }
@@ -47,9 +47,9 @@ public class LogAnalysis
                 String respTimeInfo = log[9];
                 String hourInfo = getHourInfo(timeInfo);
                 /*Emit <"1_state", "1">*/
-                context.write(new Text("1_"+"00:00-00:00_"+stateCode),one);
-                /*Emit <"1_time_state>, "1">
-                context.write(new Text("1_"+hourInfo+"_"+stateCode),one);
+                context.write(new Text("1_"+ "00:00-00:00_"+stateCode),one);
+                /*Emit <"1_time_state>, "1">*/
+                context.write(new Text("1_"+ hourInfo+"_"+stateCode),one);
                 /*Emit <"2_ip", "1">*/
                 context.write(new Text("2_"+ip),one);
                 /*Emit <"2_ip_time", "1">*/
@@ -79,7 +79,7 @@ public class LogAnalysis
             String[] keyInfo = key.toString().split("_");
             switch (Integer.parseInt(keyInfo[0]))
             {
-                case 1: case 2: case 3:
+                case 1: case 2: case 3:     //task1-3
                     {
                     int sum = 0;
                     for (Text t : values) {
@@ -94,8 +94,9 @@ public class LogAnalysis
                     double time = 0;
                     for (Text t : values) {
                         String[] valueInfo = t.toString().split("_");
-                        time += Integer.parseInt(valueInfo[0]);
-                        n += Integer.parseInt(valueInfo[1]);
+                        int ni = Integer.parseInt(valueInfo[1]);
+                        time += (Double.parseDouble(valueInfo[0]) * ni);
+                        n += ni;
                     }
                     context.write(key, new Text("" + time / n + "_" + n));
                     break;
@@ -111,7 +112,7 @@ public class LogAnalysis
             String[] keyInfo = key.toString().split("_");
             if(keyInfo.length == 2)
                 return super.getPartition(key, value, numReduceTasks);
-            else    //keyInfo.length == 3
+            else    /*keyInfo.length == 3*/
                 return super.getPartition(new Text(keyInfo[0]+"_"+keyInfo[1]), value, numReduceTasks);
         }
     }
@@ -247,14 +248,10 @@ public class LogAnalysis
     {
         try{
             // 若输出目录存在,则删除
-            Path path = new Path("/output");
-            FileSystem fileSystem = FileSystem.get(new URI(path.toString()), new Configuration());
-            if (fileSystem.exists(path))
-                fileSystem.delete(path, true);
             for(int i = 1; i <= 4; i++)
             {
-                path = new Path(args[i]);
-                fileSystem = FileSystem.get(new URI(args[i]), new Configuration());
+                Path path = new Path(args[i]);
+                FileSystem fileSystem = FileSystem.get(new URI(args[i]), new Configuration());
                 if (fileSystem.exists(path))
                     fileSystem.delete(path, true);
             }
@@ -286,7 +283,7 @@ public class LogAnalysis
             MultipleOutputs.addNamedOutput(job, "Task2", LogTextOutputFormat.class, Text.class, Text.class);
             MultipleOutputs.addNamedOutput(job, "Task3", LogTextOutputFormat.class, Text.class, Text.class);
             MultipleOutputs.addNamedOutput(job, "Task4", LogTextOutputFormat.class, Text.class, Text.class);
-            FileOutputFormat.setOutputPath(job, new Path("/output"));
+            FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
             LazyOutputFormat.setOutputFormatClass(job, LogTextOutputFormat.class);
             System.exit(job.waitForCompletion(true) ? 0 : 1);
