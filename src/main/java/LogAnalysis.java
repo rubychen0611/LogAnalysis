@@ -1,4 +1,5 @@
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
@@ -20,16 +21,10 @@ public class LogAnalysis
     public static class LogTextOutputFormat extends TextOutputFormat<Text, Text>
     {
         @Override
-        public Path getDefaultWorkFile(TaskAttemptContext context, String extension) throws IOException{
-            FileOutputCommitter committer = (FileOutputCommitter) getOutputCommitter(context);
-            return new Path(committer.getWorkPath(),getOutputName(context)+".txt");
+        public Path getDefaultWorkFile(TaskAttemptContext context, String extension) {
+            return new Path(getOutputName(context)+".txt");
         }
-       /* public synchronized static String getCostomFileName(String name)
-        {
 
-            StringBuilder result = new StringBuilder(name);
-            return result.toString();
-        }*/
     }
     public static class LogAnalysisMapper extends Mapper<LongWritable, Text, Text, Text>
     {
@@ -50,10 +45,14 @@ public class LogAnalysis
                 timeInfo = timeInfo.substring(13);
                 String respTimeInfo = log[9];
                 String hourInfo = getHourInfo(timeInfo);
-                context.write(new Text("1_"+"00:00-00:00_"+stateCode),new Text("1"));
-                context.write(new Text("1_"+hourInfo+"_"+stateCode),new Text("1"));
-                context.write(new Text("2_"+ip),new Text("1"));
-                context.write(new Text("2_"+ip+"_"+hourInfo),new Text("1"));
+                /*Emit <"1_00:00-00:00_state", "1">*/
+                context.write(new Text("1_"+ "00:00-00:00_"+stateCode),one);
+                /*Emit <"1_time_state>, "1">*/
+                context.write(new Text("1_"+ hourInfo+"_"+stateCode),one);
+                /*Emit <"2_ip", "1">*/
+                context.write(new Text("2_"+ip),one);
+                /*Emit <"2_ip_time", "1">*/
+                context.write(new Text("2_"+ip+"_"+hourInfo),one);
                 /*Emit <"3_interface", "1">*/
                 context.write(new Text("3_" + interfaceInfo), one);
                 /*Emit <"3_interface_time", "1">*/
@@ -77,11 +76,9 @@ public class LogAnalysis
         public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException
         {
             String[] keyInfo = key.toString().split("_");
-            switch (Integer.parseInt(keyInfo[0]))         //task3
+            switch (Integer.parseInt(keyInfo[0]))
             {
-                case 1:
-                case 2:
-                case 3:
+                case 1: case 2: case 3:     //task1-3
                     {
                     int sum = 0;
                     for (Text t : values) {
@@ -96,8 +93,9 @@ public class LogAnalysis
                     double time = 0;
                     for (Text t : values) {
                         String[] valueInfo = t.toString().split("_");
-                        time += Integer.parseInt(valueInfo[0]);
-                        n += Integer.parseInt(valueInfo[1]);
+                        int ni = Integer.parseInt(valueInfo[1]);
+                        time += (Double.parseDouble(valueInfo[0]) * ni);
+                        n += ni;
                     }
                     context.write(key, new Text("" + time / n + "_" + n));
                     break;
@@ -113,7 +111,7 @@ public class LogAnalysis
             String[] keyInfo = key.toString().split("_");
             if(keyInfo.length == 2)
                 return super.getPartition(key, value, numReduceTasks);
-            else    //keyInfo.length == 3
+            else    /*keyInfo.length == 3*/
                 return super.getPartition(new Text(keyInfo[0]+"_"+keyInfo[1]), value, numReduceTasks);
         }
     }
@@ -121,6 +119,11 @@ public class LogAnalysis
     {
         private MultipleOutputs<Text,Text> mos;
         private String[] outputPath;
+        private Integer count200=0;
+        private Integer count404=0;
+        private Integer count500=0;
+        private static String CurrentItem = new String();
+
         @Override
         public void setup(Context context)
         {
@@ -132,10 +135,7 @@ public class LogAnalysis
             outputPath[3] = conf.get("outputPath4");
             mos = new MultipleOutputs<Text, Text>(context);       //初始化mos
         }
-        private Integer count200=0;
-        private Integer count404=0;
-        private Integer count500=0;
-        static String CurrentItem = new String();
+
         @Override
         public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException
         {
@@ -155,24 +155,15 @@ public class LogAnalysis
                             mos.write("Task1", new Text("404" + ":"), new Text(count404.toString()) ,outputPath[0]+"/1");
                             mos.write("Task1", new Text("500" + ":"), new Text(count500.toString()) ,outputPath[0]+"/1");
 
-/*
-                            context.write(new Text("200"),new Text(":"+count200.toString()));
-                            context.write(new Text("400"),new Text(":"+count404.toString()));
-                            context.write(new Text("500"),new Text(":"+count500.toString()));*/
-
                         }
                         else
                         {
                             mos.write("Task1", new Text(CurrentItem),new Text(" 200:"+count200.toString()
                                     +" 400:"+count404.toString()+" 500:"+count500.toString()) ,outputPath[0]+"/1");
-
-                            /*context.write(new Text(CurrentItem),new Text(" 200:"+count200.toString()
-                                    +" 400:"+count404.toString()+" 500:"+count500.toString()));*/
                         }
                         count200=0;
                         count404=0;
                         count500=0;
-                        //CurrentItem = new Text(word1);
                     }
                     if(stateCode.compareTo("200")==0)
                         count200=task1sum;
@@ -193,7 +184,7 @@ public class LogAnalysis
                     }
                     else { //keyInfo.length == 3
                         /*output: [time:sum]*/
-                        mos.write("Task2", new Text(keyInfo[2]+":"), new Text(""+sum1), outputPath[1]+"/"+keyInfo[1]);
+                        mos.write("Task2", new Text(keyInfo[2]), new Text(""+sum1), outputPath[1]+"/"+keyInfo[1]);
                     }
                     break;
 
@@ -204,11 +195,11 @@ public class LogAnalysis
                     if(keyInfo.length == 2)
                     {
                         /*output: [interface: sum]*/
-                        mos.write("Task3", new Text(keyInfo[1] + ":"), new Text(""+sum) ,outputPath[2]+"/"+keyInfo[1]);
+                        mos.write("Task3", new Text(keyInfo[1]+":"), new Text(""+sum) ,outputPath[2]+"/"+keyInfo[1]);
                     }
                     else { //keyInfo.length == 3
                         /*output: [time:sum]*/
-                        mos.write("Task3", new Text(keyInfo[2]+":"), new Text(""+sum), outputPath[2]+"/"+keyInfo[1]);
+                        mos.write("Task3", new Text(keyInfo[2]), new Text(""+sum), outputPath[2]+"/"+keyInfo[1]);
                     }
                     break;
                 }
@@ -228,7 +219,7 @@ public class LogAnalysis
                         mos.write("Task4",new Text(keyInfo[1]+":"), new Text(String.format("%.2f", time/n)), outputPath[3]+"/"+keyInfo[1]);
                     }
                     else{   //keyInfo.length == 3
-                        mos.write("Task4", new Text(keyInfo[2]+":"), new Text(String.format("%.2f", time/n)),  outputPath[3]+"/"+keyInfo[1]);
+                        mos.write("Task4", new Text(keyInfo[2]), new Text(String.format("%.2f", time/n)),  outputPath[3]+"/"+keyInfo[1]);
                     }
                     break;
                 }
@@ -243,19 +234,11 @@ public class LogAnalysis
                 mos.write("Task1", new Text("404" + ":"), new Text(count404.toString()) ,outputPath[0]+"/1");
                 mos.write("Task1", new Text("500" + ":"), new Text(count500.toString()) ,outputPath[0]+"/1");
 
-/*
-                            context.write(new Text("200"),new Text(":"+count200.toString()));
-                            context.write(new Text("400"),new Text(":"+count404.toString()));
-                            context.write(new Text("500"),new Text(":"+count500.toString()));*/
-
             }
             else
             {
                 mos.write("Task1", new Text(CurrentItem),new Text(" 200:"+count200.toString()
                         +" 400:"+count404.toString()+" 500:"+count500.toString()) ,outputPath[0]+"/1");
-
-                            /*context.write(new Text(CurrentItem),new Text(" 200:"+count200.toString()
-                                    +" 400:"+count404.toString()+" 500:"+count500.toString()));*/
             }
            mos.close();
         }
@@ -264,14 +247,10 @@ public class LogAnalysis
     {
         try{
             // 若输出目录存在,则删除
-            Path path = new Path("/output");
-            FileSystem fileSystem = FileSystem.get(new URI(path.toString()), new Configuration());
-            if (fileSystem.exists(path))
-                fileSystem.delete(path, true);
-            for(int i = 1; i <= 2; i++)
+            for(int i = 1; i <= 4; i++)
             {
-                path = new Path(args[i]);
-                fileSystem = FileSystem.get(new URI(args[i]), new Configuration());
+                Path path = new Path(args[i]);
+                FileSystem fileSystem = FileSystem.get(new URI(args[i]), new Configuration());
                 if (fileSystem.exists(path))
                     fileSystem.delete(path, true);
             }
@@ -282,6 +261,9 @@ public class LogAnalysis
             conf.set("outputPath2", args[2]);
             conf.set("outputPath3", args[3]);
             conf.set("outputPath4", args[4]);
+            conf.set("mapred.textoutputformat.ignoreseparator", "true");
+            conf.set("mapred.textoutputformat.separator", " ");
+
             Job job = Job.getInstance(conf,"LogAnalysis");
 
             job.setJarByClass(LogAnalysis.class);
@@ -300,7 +282,7 @@ public class LogAnalysis
             MultipleOutputs.addNamedOutput(job, "Task2", LogTextOutputFormat.class, Text.class, Text.class);
             MultipleOutputs.addNamedOutput(job, "Task3", LogTextOutputFormat.class, Text.class, Text.class);
             MultipleOutputs.addNamedOutput(job, "Task4", LogTextOutputFormat.class, Text.class, Text.class);
-            FileOutputFormat.setOutputPath(job, new Path("/output"));
+            FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
             LazyOutputFormat.setOutputFormatClass(job, LogTextOutputFormat.class);
             System.exit(job.waitForCompletion(true) ? 0 : 1);
