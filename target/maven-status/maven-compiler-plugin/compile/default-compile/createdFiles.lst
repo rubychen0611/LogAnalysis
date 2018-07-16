@@ -1,3 +1,5 @@
+Predictor/WeightedAverage.class
+Predictor/WeightedAverage$WeightedAverageReducer.class
 LogAnalysis$LogAnalysisCombiner.class
 GenTrainingSet.class
 Predict.class
@@ -17,6 +19,7 @@ GenTestSet$GenTestSetReducer.class
 Predictor/Average$AverageReducer.class
 CalRmse.class
 GenTrainingSet$1.class
+Predictor/WeightedAverage$WeightedAverageMapper.class
 LogAnalysis$LogAnalysisPartitioner.class
 GenTestSet.class
 Predictor/Average$LogTextOutputFormat.class
@@ -25,3 +28,4 @@ CalRmse$CalRmseMapper.class
 GenTestSet$GenTestSetMapper.class
 GenTrainingSet$GenTrainingSetCombiner.class
 Predictor/Average.class
+Predictor/WeightedAverage$LogTextOutputFormat.class
