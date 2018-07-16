@@ -1,4 +1,6 @@
 /mydata/files/BigData/LogAnalysis/src/main/java/GenTestSet.java
-/mydata/files/BigData/LogAnalysis/src/main/java/Predict/Average.java
+/mydata/files/BigData/LogAnalysis/src/main/java/Predict.java
+/mydata/files/BigData/LogAnalysis/src/main/java/Predictor/Average.java
 /mydata/files/BigData/LogAnalysis/src/main/java/GenTrainingSet.java
 /mydata/files/BigData/LogAnalysis/src/main/java/LogAnalysis.java
+/mydata/files/BigData/LogAnalysis/src/main/java/CalRmse.java

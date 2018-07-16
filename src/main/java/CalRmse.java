@@ -1,5 +1,3 @@
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -12,7 +10,6 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
-import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +17,7 @@ public class CalRmse {
     public static class CalRmseMapper extends Mapper<LongWritable, Text, Text, Text> {
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-            String[] log = value.toString().split(" ");
+            String[] log = value.toString().split("\t");
             String time = log[0];
             String url = ((FileSplit) context.getInputSplit()).getPath() .getName().replace(".txt","");
            // String url = path.getParent().toString();
@@ -72,7 +69,7 @@ public class CalRmse {
             context.write(new Text("rmse:"),new Text(Double.toString(sum/rmseMap.size())));
         }
     }
-    public static void run(String[] args)
+    public static int run(String[] args)
     {
         try {
             Job job = Job.getInstance();
@@ -85,11 +82,14 @@ public class CalRmse {
             job.setReducerClass(CalRmseReducer.class);
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(Text.class);
-            FileInputFormat.addInputPath(job, new Path(args[0]+"/predict"));
-            FileInputFormat.addInputPath(job, new Path(args[0]+"/real"));
-            FileOutputFormat.setOutputPath(job, new Path(args[1]));
-            System.exit(job.waitForCompletion(true) ? 0 : 1);
-        } catch (Exception e) { e.printStackTrace();
+            FileInputFormat.addInputPath(job, new Path(args[1]));
+            FileInputFormat.addInputPath(job, new Path(args[2]));
+            FileOutputFormat.setOutputPath(job, new Path(args[1]+"/RMSE"));
+            job.waitForCompletion(true);
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
         }
     }
 }

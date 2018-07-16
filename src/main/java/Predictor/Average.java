@@ -1,12 +1,9 @@
-package Predict;
+package Predictor;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.fs.PathFilter;
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -78,7 +75,7 @@ public class Average
             mos.close();
         }
     }
-    public static void main(String[] args)
+    public static int run(String[] args)
     {
         try{
             // 若输出目录存在,则删除
@@ -110,10 +107,14 @@ public class Average
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
             LazyOutputFormat.setOutputFormatClass(job, LogTextOutputFormat.class);
-            System.exit(job.waitForCompletion(true) ? 0 : 1);
+
+            job.waitForCompletion(true);
+            return 0;
+
         }catch (Exception e)
         {
             e.printStackTrace();
+            return -1;
         }
     }
 }
