@@ -22,7 +22,6 @@ public class LogAnalysis
         @Override
         public Path getDefaultWorkFile(TaskAttemptContext context, String extension) throws IOException{
             FileOutputCommitter committer = (FileOutputCommitter) getOutputCommitter(context);
-            //System.out.println(committer.getWorkPath()+" "+getOutputName(context));
             return new Path(committer.getWorkPath(),getOutputName(context)+".txt");
         }
        /* public synchronized static String getCostomFileName(String name)
@@ -197,6 +196,7 @@ public class LogAnalysis
                         mos.write("Task2", new Text(keyInfo[2]+":"), new Text(""+sum1), outputPath[1]+"/"+keyInfo[1]);
                     }
                     break;
+
                 case 3: {
                     int sum = 0;
                     for (Text t : values)
@@ -257,7 +257,6 @@ public class LogAnalysis
                             /*context.write(new Text(CurrentItem),new Text(" 200:"+count200.toString()
                                     +" 400:"+count404.toString()+" 500:"+count500.toString()));*/
             }
-
            mos.close();
         }
     }
@@ -278,6 +277,7 @@ public class LogAnalysis
             }
 
             Configuration conf = new Configuration();
+
             conf.set("outputPath1", args[1]);
             conf.set("outputPath2", args[2]);
             conf.set("outputPath3", args[3]);
@@ -295,6 +295,7 @@ public class LogAnalysis
             job.setReducerClass(LogAnalysisReducer.class);
 
             FileInputFormat.addInputPath(job, new Path(args[0]));
+
             MultipleOutputs.addNamedOutput(job, "Task1", LogTextOutputFormat.class, Text.class, Text.class);
             MultipleOutputs.addNamedOutput(job, "Task2", LogTextOutputFormat.class, Text.class, Text.class);
             MultipleOutputs.addNamedOutput(job, "Task3", LogTextOutputFormat.class, Text.class, Text.class);
