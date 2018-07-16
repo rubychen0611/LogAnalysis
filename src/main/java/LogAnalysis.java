@@ -21,9 +21,8 @@ public class LogAnalysis
     public static class LogTextOutputFormat extends TextOutputFormat<Text, Text>
     {
         @Override
-        public Path getDefaultWorkFile(TaskAttemptContext context, String extension) throws IOException{
-            FileOutputCommitter committer = (FileOutputCommitter) getOutputCommitter(context);
-            return new Path(getOutputName(context)+".txt");//committer.getWorkPath(),
+        public Path getDefaultWorkFile(TaskAttemptContext context, String extension) {
+            return new Path(getOutputName(context)+".txt");
         }
 
     }
@@ -46,7 +45,7 @@ public class LogAnalysis
                 timeInfo = timeInfo.substring(13);
                 String respTimeInfo = log[9];
                 String hourInfo = getHourInfo(timeInfo);
-                /*Emit <"1_state", "1">*/
+                /*Emit <"1_00:00-00:00_state", "1">*/
                 context.write(new Text("1_"+ "00:00-00:00_"+stateCode),one);
                 /*Emit <"1_time_state>, "1">*/
                 context.write(new Text("1_"+ hourInfo+"_"+stateCode),one);
