@@ -3,5 +3,7 @@
 /mydata/files/BigData/LogAnalysis/src/main/java/Predictor/Average.java
 /mydata/files/BigData/LogAnalysis/src/main/java/GenTrainingSet.java
 /mydata/files/BigData/LogAnalysis/src/main/java/LogAnalysis.java
+/mydata/files/BigData/LogAnalysis/src/main/java/Predictor/MovingAverage.java
 /mydata/files/BigData/LogAnalysis/src/main/java/Predictor/WeightedAverage.java
+/mydata/files/BigData/LogAnalysis/src/main/java/Predictor/LeastSquare.java
 /mydata/files/BigData/LogAnalysis/src/main/java/CalRmse.java
