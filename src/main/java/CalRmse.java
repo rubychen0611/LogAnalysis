@@ -1,3 +1,4 @@
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -8,6 +9,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -20,9 +22,6 @@ public class CalRmse {
             String[] log = value.toString().split("\t");
             String time = log[0];
             String url = ((FileSplit) context.getInputSplit()).getPath() .getName().replace(".txt","");
-           // String url = path.getParent().toString();
-           // String url = log[1];
-            System.out.println(url);
             String num = log[1];
             context.write(new Text(time),new Text(url +"_"+num));
         }
@@ -51,7 +50,6 @@ public class CalRmse {
             {
                 Double val = keyMap.get(ke);
                 sum += val*val;
-                //System.out.println(key.toString()+" "+ke+" "+val);
             }
             rmseMap.put(key.toString(),Math.sqrt(sum/count));
         }
@@ -63,19 +61,16 @@ public class CalRmse {
             {
                 Double val = rmseMap.get(ke);
                 sum += val;
-               // System.out.println(ke+" "+val);
             }
             System.out.println(sum/rmseMap.size());
-            context.write(new Text("rmse:"),new Text(Double.toString(sum/rmseMap.size())));
+            context.write(new Text("rmse:"),new Text(""+sum/rmseMap.size()));
         }
     }
     public static int run(String[] args)
     {
         try {
-            Job job = Job.getInstance();
-            //Configuration conf = new Configuration();
-            //Job job = new Job(conf, "invert index");
-            job.setJobName("CalRmse");
+            Configuration conf = new Configuration();
+            Job job = new Job(conf, "CalRmse");
             job.setJarByClass(CalRmse.class);
             job.setInputFormatClass(TextInputFormat.class);
             job.setMapperClass(CalRmseMapper.class);
@@ -83,7 +78,7 @@ public class CalRmse {
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(Text.class);
             FileInputFormat.addInputPath(job, new Path(args[1]));
-            FileInputFormat.addInputPath(job, new Path(args[2]));
+            FileInputFormat.addInputPath(job, new Path("/user/2018st21/testset"));
             FileOutputFormat.setOutputPath(job, new Path(args[1]+"/RMSE"));
             job.waitForCompletion(true);
             return 0;

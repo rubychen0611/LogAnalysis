@@ -21,7 +21,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import java.io.IOException;
 import java.net.URI;
 
-public class WeightedAverage
+public class WeightedAverage implements Predictor
 {
     public static class LogTextOutputFormat extends TextOutputFormat<Text, Text>
     {
@@ -33,7 +33,9 @@ public class WeightedAverage
     }
     public static class WeightedAverageMapper extends Mapper<LongWritable, Text, Text, Text>
     {
-        public static double weight[];
+        private double weight[];
+        private MultipleOutputs<Text,Text> mos;
+        private String outputPath;
         @Override
         public void setup(Context context)
         {
@@ -45,13 +47,17 @@ public class WeightedAverage
                 sum += weight[i];
             }
             weight[14] = 1 - sum;
+            Configuration conf = context.getConfiguration();
+            outputPath = conf.get("outputPath");
+            mos = new MultipleOutputs<Text, Text>(context);       //初始化mos
+
         }
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException
         {
             FileSplit fileSplit = (FileSplit)context.getInputSplit();
             String interfaceInfo = fileSplit.getPath().getName();    //得到文件名
-            interfaceInfo = interfaceInfo.replace(".txt", "");  //去掉.txt.segmented
+            interfaceInfo = interfaceInfo.replace(".txt", "");
             String[] line = value.toString().split("\t");
             if(line.length == 15)
             {
@@ -60,26 +66,8 @@ public class WeightedAverage
                {
                    weightedAvg += Integer.parseInt(line[i]) * weight[i];
                }
-               context.write(new Text(interfaceInfo+"_"+line[0]),new Text(String.format("%.2f", weightedAvg)));
+               mos.write("WeightedAverage", new Text(line[0]),String.format("%.2f", weightedAvg),outputPath+"/"+ interfaceInfo);
             }
-        }
-    }
-    public static class WeightedAverageReducer extends Reducer<Text, Text, Text, Text>
-    {
-        private MultipleOutputs<Text,Text> mos;
-        private String outputPath;
-        @Override
-        public void setup(Context context)
-        {
-            Configuration conf = context.getConfiguration();
-            outputPath = conf.get("outputPath");
-            mos = new MultipleOutputs<Text, Text>(context);       //初始化mos
-        }
-        @Override
-        public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException
-        {
-            String keyInfo[] = key.toString().split("_");
-            mos.write("WeightedAverage", new Text(keyInfo[1]),values.iterator().next(),outputPath+"/"+keyInfo[0]);
         }
         @Override
         public void cleanup(Context context) throws IOException, InterruptedException
@@ -87,7 +75,7 @@ public class WeightedAverage
             mos.close();
         }
     }
-    public static int run(String[] args)
+    public int predict(String[] args)
     {
         try{
             // 若输出目录存在,则删除
@@ -107,7 +95,6 @@ public class WeightedAverage
             job.setMapOutputValueClass(Text.class);
 
             job.setMapperClass(WeightedAverage.WeightedAverageMapper.class);
-            job.setReducerClass(WeightedAverage.WeightedAverageReducer.class);
 
             fileSystem = FileSystem.get(conf);
             FileStatus[] fileStatusArray = fileSystem.globStatus(new Path(args[0]+"/*.txt"));

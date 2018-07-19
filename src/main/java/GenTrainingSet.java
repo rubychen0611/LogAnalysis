@@ -56,8 +56,7 @@ public class GenTrainingSet
     public static class LogTextOutputFormat extends TextOutputFormat<Text, IntWritable>
     {
         @Override
-        public Path getDefaultWorkFile(TaskAttemptContext context, String extension) throws IOException{
-            //FileOutputCommitter committer = (FileOutputCommitter) getOutputCommitter(context);
+        public Path getDefaultWorkFile(TaskAttemptContext context, String extension){
             return new Path(getOutputName(context)+".txt");
         }
 
@@ -198,10 +197,8 @@ public class GenTrainingSet
             });
             for(FileStatus fileStatus : fileStatusArray){
                  path = fileStatus.getPath();
-                // System.out.println(path.toString());
                  FileInputFormat.addInputPath(job, path);
               }
-            //FileInputFormat.addInputPath(job, new Path(args[0]));
             MultipleOutputs.addNamedOutput(job, "genTrainingSet", LogTextOutputFormat.class, Text.class, Text.class);
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
 

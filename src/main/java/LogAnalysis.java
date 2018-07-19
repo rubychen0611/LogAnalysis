@@ -173,21 +173,19 @@ public class LogAnalysis
                         count500=task1sum;
                     CurrentItem = task1time;
                      break;
-                case 2:
+                case 2: {
                     int sum1 = 0;
                     for (Text t : values)
                         sum1 += Integer.parseInt(t.toString());
-                    if(keyInfo.length == 2)
-                    {
+                    if (keyInfo.length == 2) {
                         /*output: [interface: sum]*/
-                        mos.write("Task2", new Text(keyInfo[1] + ":"), new Text(""+sum1) ,outputPath[1]+"/"+keyInfo[1]);
-                    }
-                    else { //keyInfo.length == 3
+                        mos.write("Task2", new Text(keyInfo[1] + ":"), new Text("" + sum1), outputPath[1] + "/" + keyInfo[1]);
+                    } else { //keyInfo.length == 3
                         /*output: [time:sum]*/
-                        mos.write("Task2", new Text(keyInfo[2]), new Text(""+sum1), outputPath[1]+"/"+keyInfo[1]);
+                        mos.write("Task2", new Text(keyInfo[2]), new Text("" + sum1), outputPath[1] + "/" + keyInfo[1]);
                     }
                     break;
-
+                }
                 case 3: {
                     int sum = 0;
                     for (Text t : values)

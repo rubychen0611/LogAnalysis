@@ -21,8 +21,9 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import java.io.IOException;
 import java.net.URI;
 
-public class Average
+public class Average implements Predictor
 {
+
     public static class LogTextOutputFormat extends TextOutputFormat<Text, Text>
     {
         @Override
@@ -33,6 +34,15 @@ public class Average
     }
     public static class AverageMapper extends Mapper<LongWritable, Text, Text, Text>
     {
+        private MultipleOutputs<Text,Text> mos;
+        private String outputPath;
+        @Override
+        public void setup(Context context)
+        {
+            Configuration conf = context.getConfiguration();
+            outputPath = conf.get("outputPath");
+            mos = new MultipleOutputs<Text, Text>(context);       //初始化mos
+        }
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException
         {
@@ -48,26 +58,8 @@ public class Average
                    sum += Integer.parseInt(line[i]);
                }
                double avg = (double)sum / 14;
-               context.write(new Text(interfaceInfo+"_"+line[0]),new Text(String.format("%.2f", avg)));
+                mos.write("Average", new Text(line[0]),new Text(String.format("%.2f", avg)),outputPath+"/"+interfaceInfo);
             }
-        }
-    }
-    public static class AverageReducer extends Reducer<Text, Text, Text, Text>
-    {
-        private MultipleOutputs<Text,Text> mos;
-        private String outputPath;
-        @Override
-        public void setup(Context context)
-        {
-            Configuration conf = context.getConfiguration();
-            outputPath = conf.get("outputPath");
-            mos = new MultipleOutputs<Text, Text>(context);       //初始化mos
-        }
-        @Override
-        public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException
-        {
-            String keyInfo[] = key.toString().split("_");
-            mos.write("Average", new Text(keyInfo[1]),values.iterator().next(),outputPath+"/"+keyInfo[0]);
         }
         @Override
         public void cleanup(Context context) throws IOException, InterruptedException
@@ -75,7 +67,8 @@ public class Average
             mos.close();
         }
     }
-    public static int run(String[] args)
+
+    public int predict(String[] args)
     {
         try{
             // 若输出目录存在,则删除
@@ -95,7 +88,6 @@ public class Average
             job.setMapOutputValueClass(Text.class);
 
             job.setMapperClass(Average.AverageMapper.class);
-            job.setReducerClass(Average.AverageReducer.class);
 
             fileSystem = FileSystem.get(conf);
             FileStatus[] fileStatusArray = fileSystem.globStatus(new Path(args[0]+"/*.txt"));

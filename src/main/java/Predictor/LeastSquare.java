@@ -21,7 +21,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import java.io.IOException;
 import java.net.URI;
 
-public class LeastSquare
+public class LeastSquare implements Predictor
 {
     public static class LeastSquareMethod
     {
@@ -262,7 +262,7 @@ public class LeastSquare
             if(line.length == 15)
             {
                 double x[] = new double[14], y[] = new double[14];
-                double weight[] = new double[14];
+                double weight[] =new double[14];
                 double sum = 0;
 
                 for(int i = 0; i < 13; i++)
@@ -308,7 +308,7 @@ public class LeastSquare
             mos.close();
         }
     }
-    public static int run(String[] args)
+    public int predict(String[] args)
     {
         try{
             // 若输出目录存在,则删除
