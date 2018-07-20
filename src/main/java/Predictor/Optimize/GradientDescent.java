@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LinearRegression {
+public class GradientDescent {
     /*
      * 训练数据示例：
      *   x0        x1        x2        y
@@ -37,7 +37,7 @@ public class LinearRegression {
         private double alpha;//训练步长
         private int iteration;//迭代次数
 
-        public LinearRegression(String fileName)
+        public GradientDescent(String fileName)
         {
             int rowoffile=getRowNumber(fileName);//获取输入训练数据文本的   行数
             int columnoffile = getColumnNumber(fileName);//获取输入训练数据文本的   列数
@@ -54,7 +54,7 @@ public class LinearRegression {
 
             loadTrainDataFromFile(fileName,rowoffile,columnoffile);
         }
-        public LinearRegression(double[][] traindata,int rowoffile,int columnoffile,double alpha,int iteration)
+        public GradientDescent(double[][] traindata,int rowoffile,int columnoffile,double alpha,int iteration)
         {
           //  int rowoffile=getRowNumber(fileName);//获取输入训练数据文本的   行数
            // int columnoffile = getColumnNumber(fileName);//获取输入训练数据文本的   列数

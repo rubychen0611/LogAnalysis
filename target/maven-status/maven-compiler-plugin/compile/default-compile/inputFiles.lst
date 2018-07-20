@@ -5,8 +5,8 @@
 /mydata/files/BigData/LogAnalysis/src/main/java/Predictor/Predictor.java
 /mydata/files/BigData/LogAnalysis/src/main/java/GenTrainingSet.java
 /mydata/files/BigData/LogAnalysis/src/main/java/LogAnalysis.java
-/mydata/files/BigData/LogAnalysis/src/main/java/Predictor/OptimizedWeightedAvg.java
-/mydata/files/BigData/LogAnalysis/src/main/java/Predictor/Optimize/LinearRegression.java
+/mydata/files/BigData/LogAnalysis/src/main/java/Predictor/OptimizedLinearRegression.java
+/mydata/files/BigData/LogAnalysis/src/main/java/Predictor/Optimize/GradientDescent.java
 /mydata/files/BigData/LogAnalysis/src/main/java/Predictor/Average.java
 /mydata/files/BigData/LogAnalysis/src/main/java/Predictor/ExpSmoothAvg.java
 /mydata/files/BigData/LogAnalysis/src/main/java/Predictor/Optimize/TrainCo.java

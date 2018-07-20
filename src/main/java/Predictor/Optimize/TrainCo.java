@@ -62,7 +62,7 @@ public class TrainCo {
                       //  String s = testbr[i].readLine();
                       //  traindataset[i][14]=Integer.parseInt(s.split("\t")[1]);
                     }
-                    LinearRegression m = new LinearRegression(traindataset,filelist.length,15,0.001,50000);//*(15-window)window*(14-window)window+1
+                    GradientDescent m = new GradientDescent(traindataset,filelist.length,15,0.001,50000);//*(15-window)window*(14-window)window+1
                  //   m.printTrainData();
                     m.trainTheta();
                     m.printTheta();

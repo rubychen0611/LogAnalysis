@@ -9,63 +9,88 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.partition.HashPartitioner;
 
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class CalRmse {
     public static class CalRmseMapper extends Mapper<LongWritable, Text, Text, Text> {
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-            String[] log = value.toString().split("\t");
-            String time = log[0];
-            String url = ((FileSplit) context.getInputSplit()).getPath() .getName().replace(".txt","");
-            String num = log[1];
-            context.write(new Text(time),new Text(url +"_"+num));
+            FileSplit fileSplit = (FileSplit)context.getInputSplit();
+            String interfaceInfo = fileSplit.getPath().getName();    //得到文件名
+            //System.out.println(interfaceInfo);
+            if(interfaceInfo.contains(".txt")&&(!interfaceInfo.contains(".crc")))
+            {
+                String[] log = value.toString().split("\t");
+                //System.out.println(value.toString());
+                String time = log[0];
+                String url = ((FileSplit) context.getInputSplit()).getPath() .getName().replace(".txt","");
+                // String url = path.getParent().toString();
+                // String url = log[1];
+
+                String num = log[1];
+                context.write(new Text(time+"_"+url ),new Text(num));
+            }
+
         }
 
     }
+    public static class CalRmsePartitioner extends HashPartitioner<Text, Text>
+    {
+        @Override
+        public int getPartition(Text key, Text value, int numReduceTasks)
+        {
+            String[] keyInfo = key.toString().split("_");
+            return super.getPartition(new Text(keyInfo[0]), value, numReduceTasks);
+        }
+    }
     public static class CalRmseReducer extends Reducer<Text, Text, Text, Text>
     {
-        Map<String,Double> rmseMap=new HashMap<String, Double>();
+        private double rmse=0;
+        private double currentDis=0;
+        private double urlcount=0;
+        private String currentTime=new String();
         @Override
         public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException
         {
-            Map<String,Double> keyMap = new HashMap<String, Double>();
+            String[] keyInfo=key.toString().split("_");
+            String time=keyInfo[0];
+            int t=0;
+            double dis = 0;
             for(Text val: values)
             {
-                String[] array = val.toString().split("_");
-                String url = array[0];
-                String num = array[1];
-                if(keyMap.containsKey(url))
-                    keyMap.put(url,Double.parseDouble(num)-keyMap.get(url));
+                if (t==0)
+                    dis=Double.parseDouble(val.toString());
+                else if (t==1)
+                    dis=Double.parseDouble(val.toString())-dis;
                 else
-                    keyMap.put(url,Double.parseDouble(num));
+                    break;
+                t++;
             }
-            double sum=0;
-            int count=keyMap.size();
-            for(String ke : keyMap.keySet())
+            if (currentTime.length()!=0&&currentTime.compareTo(time)!=0)
             {
-                Double val = keyMap.get(ke);
-                sum += val*val;
+                rmse=rmse+Math.sqrt(currentDis/urlcount);
+                urlcount=1;
+                currentDis=dis*dis;
             }
-            rmseMap.put(key.toString(),Math.sqrt(sum/count));
+            else
+            {
+                urlcount++;
+                currentDis+=dis*dis;
+            }
+            currentTime=time;
         }
         @Override
         public void cleanup(Context context) throws IOException, InterruptedException
         {
-            double sum=0;
-            for(String ke : rmseMap.keySet())
-            {
-                Double val = rmseMap.get(ke);
-                sum += val;
-            }
-            System.out.println(sum/rmseMap.size());
-            context.write(new Text("rmse:"),new Text(""+sum/rmseMap.size()));
+            rmse+=Math.sqrt(currentDis/urlcount);
+            context.write(new Text("rmse:"),new Text(Double.toString(rmse/24)));
         }
     }
+
     public static int run(String[] args)
     {
         try {

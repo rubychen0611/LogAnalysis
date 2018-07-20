@@ -67,7 +67,7 @@ public class LogAnalysis
         {
             int hour = Integer.parseInt(time.split(":")[0]);
             int nextHour = (hour + 1) % 24;
-            return new String(hour+":00-" + nextHour+":00");
+            return new String(String.format("%02d",hour)+":00-" + String.format("%02d",nextHour)+":00");
         }
     }
     public static class LogAnalysisCombiner extends Reducer<Text, Text, Text, Text>
@@ -159,7 +159,7 @@ public class LogAnalysis
                         else
                         {
                             mos.write("Task1", new Text(CurrentItem),new Text(" 200:"+count200.toString()
-                                    +" 400:"+count404.toString()+" 500:"+count500.toString()) ,outputPath[0]+"/1");
+                                    +" 404:"+count404.toString()+" 500:"+count500.toString()) ,outputPath[0]+"/1");
                         }
                         count200=0;
                         count404=0;
@@ -236,7 +236,7 @@ public class LogAnalysis
             else
             {
                 mos.write("Task1", new Text(CurrentItem),new Text(" 200:"+count200.toString()
-                        +" 400:"+count404.toString()+" 500:"+count500.toString()) ,outputPath[0]+"/1");
+                        +" 404:"+count404.toString()+" 500:"+count500.toString()) ,outputPath[0]+"/1");
             }
            mos.close();
         }

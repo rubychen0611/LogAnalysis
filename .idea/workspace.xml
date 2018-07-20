@@ -2,103 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a22e7bd1-5598-4163-8f6d-c70d2fbff037" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/LogPredict.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Predictor/Predictor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CalRmse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CalRmse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GenTrainingSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GenTrainingSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinearRegression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/Optimize/LinearRegression.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LogAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogAnalysis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Predict.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Predict/ExpSmoothAvg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/ExpSmoothAvg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Predict/SmallestDis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/SmallestDis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Predict/WeightAvg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/OptimizedWeightedAvg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Predictor/Average.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/Average.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Predictor/LeastSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/LeastSquare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogPredict.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogPredict.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Predictor/MovingAverage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/MovingAverage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Predictor/WeightedAverage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/WeightedAverage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SimAnn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/Optimize/SimAnn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TrainCo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/Optimize/TrainCo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/_SUCCESS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-category-ids-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-category-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-category-scenic-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-category-statis-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-category-tuniu-hot-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-category-vendor-statis-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-category-weekendproduct-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-faq-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-flight-ticket-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-guide-delete.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-guide-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-hotel-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-hotel-search-nearby-scenic-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-hotel-search-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-hotelSuggestion-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-phoenix-product-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-poi-query-queryCategory-.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-poi-query-queryCategory.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-poi-query-queryNumberFound.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-poi-query-queryProvinceList.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-poi-query-queryScenicNumPerCity.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-poi-query-queryScenicSpotCount.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-poi-query-queryScenicTypeList.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-poi-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-poi-scenictype-provincelist-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-product-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result/Average/tour-suggestion-query.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Predictor/Optimize/LinearRegression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/Optimize/GradientDescent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Predictor/Optimize/TrainCo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/Optimize/TrainCo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Predictor/OptimizedWeightedAvg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Predictor/OptimizedLinearRegression.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/LogAnalysis.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/LogAnalysis.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/CalRmse$CalRmseMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CalRmse$CalRmseMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/CalRmse$CalRmseReducer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CalRmse$CalRmseReducer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/CalRmse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CalRmse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GenTrainingSet$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GenTrainingSet$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GenTrainingSet$GenTrainingSetCombiner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GenTrainingSet$GenTrainingSetCombiner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GenTrainingSet$GenTrainingSetMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GenTrainingSet$GenTrainingSetMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GenTrainingSet$GenTrainingSetReducer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GenTrainingSet$GenTrainingSetReducer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GenTrainingSet$LogTextOutputFormat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GenTrainingSet$LogTextOutputFormat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GenTrainingSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GenTrainingSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LogAnalysis$LogAnalysisMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LogAnalysis$LogAnalysisMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/LogAnalysis$LogAnalysisReducer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LogAnalysis$LogAnalysisReducer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LogAnalysis.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LogAnalysis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Predict.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/Average$AverageMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Predictor/Average$AverageMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/Average$AverageReducer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/Average$LogTextOutputFormat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Predictor/Average$LogTextOutputFormat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/Average.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Predictor/Average.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/LeastSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Predictor/LeastSquare.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LogPredict.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LogPredict.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Predictor/MovingAverage$MovingAverageMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Predictor/MovingAverage$MovingAverageMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/MovingAverage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Predictor/MovingAverage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/WeightedAverage$WeightedAverageMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Predictor/WeightedAverage$WeightedAverageMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/WeightedAverage$WeightedAverageReducer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/WeightedAverage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Predictor/WeightedAverage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/_SUCCESS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-category-ids-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-category-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-category-scenic-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-category-statis-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-category-tuniu-hot-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-category-vendor-statis-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-category-weekendproduct-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-faq-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-flight-ticket-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-guide-delete.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-guide-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-hotel-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-hotel-search-nearby-scenic-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-hotel-search-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-hotelSuggestion-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-phoenix-product-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-poi-query-queryCategory-.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-poi-query-queryCategory.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-poi-query-queryNumberFound.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-poi-query-queryProvinceList.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-poi-query-queryScenicNumPerCity.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-poi-query-queryScenicSpotCount.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-poi-query-queryScenicTypeList.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-poi-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-poi-scenictype-provincelist-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-product-query.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/result/Average/tour-suggestion-query.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/Optimize/LinearRegression.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/Optimize/TrainCo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Predictor/Optimize/TrainCo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/OptimizedWeightedAvg$LogTextOutputFormat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/OptimizedWeightedAvg$OptimizedWeightedAvgMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Predictor/OptimizedWeightedAvg.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
@@ -117,7 +41,7 @@
       <file leaf-file-name="LeastSquare.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/LeastSquare.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4286">
+            <state relative-caret-position="30">
               <caret line="167" selection-start-line="167" selection-end-line="167" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -126,35 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Average.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Average.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="33" column="5" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CalRmse.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CalRmse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="82" column="78" lean-forward="true" selection-start-line="82" selection-start-column="56" selection-end-line="82" selection-end-column="78" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogPredict.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LogPredict.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/LogPredict.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+              <caret line="5" column="61" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -162,35 +62,20 @@
       <file leaf-file-name="TrainCo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Optimize/TrainCo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="1860">
+              <caret line="64" column="60" selection-start-line="64" selection-start-column="60" selection-end-line="64" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OptimizedWeightedAvg.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/OptimizedWeightedAvg.java">
+      <file leaf-file-name="OptimizedLinearRegression.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/OptimizedLinearRegression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LinearRegression.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Optimize/LinearRegression.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MovingAverage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/MovingAverage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1606">
-              <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+            <state relative-caret-position="195">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,8 +83,20 @@
       <file leaf-file-name="SimAnn.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Optimize/SimAnn.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
+            <state relative-caret-position="747">
               <caret line="31" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CalRmse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CalRmse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -233,6 +130,9 @@
       <find>OptimizedWeightedAvg</find>
       <find>WeightAvg</find>
       <find>Exp</find>
+      <find>Analysis</find>
+      <find>WeightedAvg</find>
+      <find>LinearRegression</find>
     </findStrings>
     <replaceStrings>
       <replace>Predict</replace>
@@ -249,6 +149,9 @@
       <replace>WeightAvg</replace>
       <replace>SmallestDis</replace>
       <replace>OptimizedWeightedAvg</replace>
+      <replace>Cal</replace>
+      <replace>LinearRegression</replace>
+      <replace>GradientDescent</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -272,9 +175,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Predict.java" />
         <option value="$PROJECT_DIR$/src/main/java/Predictor/LeastSquare.java" />
         <option value="$PROJECT_DIR$/src/main/java/Predictor/Predictor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Predictor/MovingAverage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LogAnalysis.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CalRmse.java" />
         <option value="$PROJECT_DIR$/src/main/java/Predictor/WeightedAverage.java" />
         <option value="$PROJECT_DIR$/src/main/java/GenTrainingSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/Predictor/ExpSmoothAvg.java" />
@@ -283,8 +183,13 @@
         <option value="$PROJECT_DIR$/src/main/java/Predictor/WeightAvg.java" />
         <option value="$PROJECT_DIR$/src/main/java/Predictor/SmallestDis.java" />
         <option value="$PROJECT_DIR$/src/main/java/Predictor/Optimized/TrainCo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LogPredict.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Predictor/MovingAverage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CalRmse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/LogAnalysis.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Predictor/Optimize/LinearRegression.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Predictor/Optimize/TrainCo.java" />
         <option value="$PROJECT_DIR$/src/main/java/Predictor/OptimizedWeightedAvg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/LogPredict.java" />
       </list>
     </option>
   </component>
@@ -310,7 +215,7 @@
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="580" />
     <option name="y" value="178" />
     <option name="width" value="1400" />
@@ -322,9 +227,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -395,6 +299,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -494,8 +399,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="1" width="2562" height="1321" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="-6" width="2560" height="1327" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -505,11 +409,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.14606741" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32978722" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.46897164" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32712767" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.46276596" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.42021278" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18900481" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19382022" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -518,28 +422,28 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40514183" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33067375" />
-      <window_info anchor="bottom" id="Messages" order="7" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.33067375" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32978722" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33776596" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23555377" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33776596" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32978722" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.33067375" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40514183" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.31294325" />
@@ -547,7 +451,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="5" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="right" id="Maven Projects" order="7" visible="true" weight="0.026886035" />
       <window_info id="Favorites" order="6" side_tool="true" />
@@ -803,13 +707,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Nearest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1770">
-          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Nearest.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/hadoop/hadoop-core/1.2.1/hadoop-core-1.2.1.jar!/org/apache/hadoop/conf/Configuration.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -817,20 +715,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GenTrainingSet1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3690">
-          <caret line="146" column="51" selection-start-line="146" selection-start-column="51" selection-end-line="146" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1188#1189#0" expanded="true" />
-            <element signature="e#1251#1252#0" expanded="true" />
-            <element signature="e#1320#1321#0" expanded="true" />
-            <element signature="e#1381#1382#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GenTrainingSet1.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Predictor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -838,27 +723,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LogAnalysis.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/ExpSmoothAvg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5610">
-          <caret line="187" column="17" selection-start-line="187" selection-start-column="17" selection-end-line="187" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="401">
+          <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LogTextOutputFormat.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/SmallestDis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Average.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/MovingAverage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1606">
-          <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+        <state relative-caret-position="690">
+          <caret line="42" column="3" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/LeastSquare.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/CalRmse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4286">
-          <caret line="167" selection-start-line="167" selection-end-line="167" />
+        <state relative-caret-position="30">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -867,100 +764,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/WeightedAverage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="102" column="35" lean-forward="true" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
+        <state relative-caret-position="990">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GenTrainingSet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/LeastSquare.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2716">
-          <caret line="58" column="84" selection-start-line="58" selection-start-column="84" selection-end-line="58" selection-end-column="84" />
+        <state relative-caret-position="30">
+          <caret line="167" selection-start-line="167" selection-end-line="167" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/ExpSmoothAvg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LogTextOutputFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Average.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="33" column="5" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Optimize/LinearRegression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Optimize/SimAnn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/SmallestDis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Optimize/TrainCo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="1860">
+          <caret line="64" column="60" selection-start-line="64" selection-start-column="60" selection-end-line="64" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/OptimizedWeightedAvg.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Optimize/SimAnn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="747">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/OptimizedLinearRegression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Predictor/Optimize/GradientDescent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1590">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GenTrainingSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="157" column="104" selection-start-line="157" selection-start-column="19" selection-end-line="157" selection-end-column="104" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LogAnalysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="69" column="48" selection-start-line="69" selection-start-column="48" selection-end-line="69" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/LogPredict.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CalRmse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="82" column="78" lean-forward="true" selection-start-line="82" selection-start-column="56" selection-end-line="82" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="5" column="61" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
         </state>
       </provider>
     </entry>

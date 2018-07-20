@@ -3,7 +3,7 @@ public class LogPredict
 {
     public static void main(String[] args)
     {
-        Predictor predictor = new OptimizedWeightedAvg();
+        Predictor predictor = new OptimizedLinearRegression();
         if(predictor.predict(args) == 0)
             System.out.println("----------Prediction finished.----------");
         if(CalRmse.run(args)==0)

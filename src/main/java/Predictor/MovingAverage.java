@@ -33,7 +33,7 @@ public class MovingAverage implements Predictor
     }
     public static class MovingAverageMapper extends Mapper<LongWritable, Text, Text, Text>
     {
-        private static int k = 3;
+        private static int k = 1;
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException
         {

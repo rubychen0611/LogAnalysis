@@ -20,7 +20,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import java.io.IOException;
 import java.net.URI;
 
-public class OptimizedWeightedAvg implements Predictor
+public class OptimizedLinearRegression implements Predictor
 {
     public static class LogTextOutputFormat extends TextOutputFormat<Text, Text>
     {
@@ -30,7 +30,7 @@ public class OptimizedWeightedAvg implements Predictor
         }
 
     }
-    public static class OptimizedWeightedAvgMapper extends Mapper<LongWritable, Text, Text, Text>
+    public static class OptimizedLinearRegressionMapper extends Mapper<LongWritable, Text, Text, Text>
     {
         private MultipleOutputs<Text,Text> mos;
         private String outputPath;
@@ -85,7 +85,7 @@ public class OptimizedWeightedAvg implements Predictor
                 {
                     sum+=weight[time][i]*Integer.parseInt(line[i]);
                 }
-               mos.write("OptimizedWeightedAvg",new Text(line[0]), new Text( String.format("%.2f", sum)), outputPath+"/"+interfaceInfo );
+               mos.write("OptimizedLinearRegression",new Text(line[0]), new Text( String.format("%.2f", sum)), outputPath+"/"+interfaceInfo );
 
             }
         }
@@ -106,14 +106,14 @@ public class OptimizedWeightedAvg implements Predictor
 
             Configuration conf = new Configuration();
             conf.set("outputPath", args[1]);
-            Job job = Job.getInstance(conf,"OptimizedWeightedAvg");
+            Job job = Job.getInstance(conf,"OptimizedLinearRegression");
 
-            job.setJarByClass(OptimizedWeightedAvg.class);
+            job.setJarByClass(OptimizedLinearRegression.class);
             job.setInputFormatClass(TextInputFormat.class);
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(Text.class);
 
-            job.setMapperClass(OptimizedWeightedAvg.OptimizedWeightedAvgMapper.class);
+            job.setMapperClass(OptimizedLinearRegression.OptimizedLinearRegressionMapper.class);
 
             fileSystem = FileSystem.get(conf);
             FileStatus[] fileStatusArray = fileSystem.globStatus(new Path(args[0]+"/*.txt"));
@@ -121,7 +121,7 @@ public class OptimizedWeightedAvg implements Predictor
                 path = fileStatus.getPath();
                 FileInputFormat.addInputPath(job, path);
             }
-            MultipleOutputs.addNamedOutput(job, "OptimizedWeightedAvg", LogTextOutputFormat.class, Text.class, Text.class);
+            MultipleOutputs.addNamedOutput(job, "OptimizedLinearRegression", LogTextOutputFormat.class, Text.class, Text.class);
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
             LazyOutputFormat.setOutputFormatClass(job, LogTextOutputFormat.class);
